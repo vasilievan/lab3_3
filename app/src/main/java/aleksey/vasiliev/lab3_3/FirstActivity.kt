@@ -53,5 +53,9 @@ class FirstActivity : ComponentActivity() {
             BottomNavigationBar(this)
         }
     }
+
+    override fun onBackPressed() {
+        finish()
+    }
 }
 
