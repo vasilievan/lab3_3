@@ -49,16 +49,6 @@ class SecondActivity : ComponentActivity() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        val l = Logger.getAnonymousLogger()
-        l.warning(resultCode.toString())
-        l.warning(requestCode.toString())
-        if (resultCode == 1) {
-            finish()
-        }
-        super.onActivityResult(requestCode, resultCode, data)
-    }
-
     @Preview(showBackground = true)
     @Composable
     fun DefaultPreview() {
