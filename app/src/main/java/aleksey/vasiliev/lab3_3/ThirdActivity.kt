@@ -11,20 +11,26 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 class ThirdActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            Lab3_3Theme {
-                Scaffold(
-                    topBar = { TopAppBar(title = { Text("Third") }) },
-                    bottomBar = { BottomNavigationBar(this) },
-                    content = { Layout() })
+        setContentView(
+            ComposeView(this).apply {
+                setContent {
+                    Lab3_3Theme {
+                        Scaffold(
+                            topBar = { TopAppBar(title = { Text("Third") }) },
+                            bottomBar = { BottomNavigationBar(this@ThirdActivity) },
+                            content = { Layout() })
+                    }
+                }
+                id = R.id.activity_third
             }
-        }
+        )
     }
 
     @Composable

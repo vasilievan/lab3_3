@@ -12,20 +12,26 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.tooling.preview.Preview
 
 class About : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            Lab3_3Theme {
-                Scaffold(
-                    topBar = { TopAppBar(title = { Text("About") }) },
-                    bottomBar = { BottomNavigationBar(this) },
-                    content = { Spacer(modifier = Modifier.fillMaxSize()) }
-                )
+        setContentView(
+            ComposeView(this).apply {
+                setContent {
+                    Lab3_3Theme {
+                        Scaffold(
+                            topBar = { TopAppBar(title = { Text("About") }) },
+                            bottomBar = { BottomNavigationBar(this@About) },
+                            content = { Spacer(modifier = Modifier.fillMaxSize()) }
+                        )
+                    }
+                }
+                id = R.id.activity_about
             }
-        }
+        )
     }
 
     @Preview(showBackground = true)

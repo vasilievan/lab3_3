@@ -11,6 +11,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import java.util.logging.Logger
@@ -18,14 +19,19 @@ import java.util.logging.Logger
 class SecondActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            Lab3_3Theme {
-                Scaffold(
-                    topBar = { TopAppBar(title = { Text("Second") }) },
-                    bottomBar = { BottomNavigationBar(this) },
-                    content = { Layout() })
+        setContentView(
+            ComposeView(this).apply {
+                setContent {
+                    Lab3_3Theme {
+                        Scaffold(
+                            topBar = { TopAppBar(title = { Text("Second") }) },
+                            bottomBar = { BottomNavigationBar(this@SecondActivity) },
+                            content = { Layout() })
+                    }
+                }
+                id = R.id.activity_second
             }
-        }
+        )
     }
 
     @Composable
